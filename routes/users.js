@@ -48,7 +48,7 @@ router.post("/login", async (req, res) => {
 
 router.post("/all-other-users", async (req, res) => {
   try {
-    let users = await User.find();
+    let users = await User.find().populate("superlative");
 
     let notYou = users.filter((user) => {
       return user._id !== req.user._id;
